@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace MigrationsExample.Models
 {
@@ -15,11 +16,14 @@ namespace MigrationsExample.Models
         [StringLength(255)]
         [Required]
         [Column(TypeName ="nvachar")]
+        [DisplayName("Tieu De")]
         public string Title { get; set; }
         [Required]
         [DataType(DataType.Date)]
+        [DisplayName("Ngay Tao")]
         public DateTime PublishDate { get; set; }
 
+        [DisplayName("Noi Dung")]
         public string Content {set; get;}
     }
 }

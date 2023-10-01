@@ -42,3 +42,4 @@ app.Run();
                 User ID=SA;Password=482004;Integrated Security=True;
                 TrustServerCertificate=True;Encrypt=True"
                 ; */
+  //    dotnet aspnet-codegenerator razorpage -m "MigrationsExample.Models.Article" -dc "MigrationsExample.Models.MyBlogContext" -outDir Pages/Blog --referenceScriptLibraries

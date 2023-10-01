@@ -1,0 +1,37 @@
+@page
+@model MigrationsExample.Pages_Blog.DetailsModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.Article.Content</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MigrationsExample.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+<div>
+    <h4>Article</h4>
+    <div class="mg-4 bk-5">
+        <p>
+            <ul>
+                <li class="alert alert-danger">@Html.Raw(Model.Article.Title)</li>
+                <li class="alert alert-primary">@Model.Article.Content</li>
+            </ul>
+            
+        </p>
+    </div>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Article?.ID">Edit</a> |
+    <a asp-page="./Index">Tro Ve</a>
+</div>
+</body>
+</html>

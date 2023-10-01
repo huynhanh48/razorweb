@@ -1,0 +1,82 @@
+@page
+@model MigrationsExample.Pages_Blog.IndexModel
+
+@{
+    Layout = null;
+    int i=0;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>bài Viết</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MigrationsExample.styles.css" asp-append-version="true" />
+</head>
+
+
+
+@{
+    var _Pagesding = new HA.Helpers.PageDing(){
+        currentPage = Model.currentPage,
+        coutPage=Model.coutPage,
+        genarateUrl= (int? p)=>"Blog?p="+p
+    };
+}
+<body>
+     <partial name="_Pages" model="_Pagesding"></partial>
+   
+    <div>
+    <form  method="get" asp-page="./Index">
+    <label for="">Search</label>
+    <input name="SearchString" value="">
+    <button type="submit">submit</button>
+    </form>
+    </div>
+<p>
+    <a asp-page="Create" class="btn btn-danger">Tạo Bài Viết Mới</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article[0].PublishDate)
+            </th>
+            <th>
+             
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Article) {
+        <tr>
+            <td>@(++i)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-primary">Chỉnh Sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-secondary">Xem </a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-danger">Xoá</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
