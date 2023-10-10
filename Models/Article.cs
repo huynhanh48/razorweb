@@ -14,12 +14,12 @@ namespace MigrationsExample.Models
         public int ID { get; set; }
         [StringLength(255)]
         [Required]
-        [Column(TypeName ="nvachar")]
+        [Column(TypeName ="nvarchar")]
         public string Title { get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime PublishDate { get; set; }
-
+        [Column(TypeName ="ntext")]
         public string Content {set; get;}
     }
 }

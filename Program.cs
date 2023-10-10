@@ -2,14 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using MigrationsExample.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+string connections = builder.Configuration.GetConnectionString("MyBlogContext");
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MyBlogContext>(
-    option => option.UseSqlServer(@"
-                Data Source=localhost,1433;
-                Initial Catalog=HuynhANh;
-                User ID=SA;Password=482004;Integrated Security=True;
-                TrustServerCertificate=True;Encrypt=True")
+    option => option.UseSqlServer(connections)
 );
 
 var app = builder.Build();
@@ -42,3 +39,5 @@ app.Run();
                 User ID=SA;Password=482004;Integrated Security=True;
                 TrustServerCertificate=True;Encrypt=True"
                 ; */
+// create , read ,update,deleta
+// dotnet aspnetgenerator razorpage -m MigrationsExample.Models.Articel -dc MigrationsExample.Models.MyBlogContext -outDir Pages/Blog --referenceScriptLibraries

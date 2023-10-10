@@ -12,8 +12,8 @@ using MigrationsExample.Models;
 namespace MigrationsExample.Migrations
 {
     [DbContext(typeof(MyBlogContext))]
-    [Migration("20230923230653_innitdb")]
-    partial class innitdb
+    [Migration("20231009222717_innitdb2")]
+    partial class innitdb2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,14 +35,15 @@ namespace MigrationsExample.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("ntext");
 
                     b.Property<DateTime>("PublishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar");
 
                     b.HasKey("ID");
 
